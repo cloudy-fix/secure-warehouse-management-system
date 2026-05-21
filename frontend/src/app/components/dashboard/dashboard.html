@@ -1,0 +1,103 @@
+<div class="container mt-5">
+
+  <h1 class="mb-4 text-center">
+    Admin Dashboard
+  </h1>
+
+  <div class="row">
+
+    <div class="col-md-3">
+
+      <div class="card text-center p-4 bg-primary text-white">
+
+        <h3>Products</h3>
+
+        <h2>100</h2>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+      <div class="card text-center p-4 bg-success text-white">
+
+        <h3>Orders</h3>
+
+        <h2>50</h2>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+      <div class="card text-center p-4 bg-warning text-dark">
+
+        <h3>Warehouses</h3>
+
+        <h2>10</h2>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+      <div class="card text-center p-4 bg-dark text-white">
+
+        <h3>Shipments</h3>
+
+        <h2>25</h2>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="mt-5">
+
+    <a
+      routerLink="/products"
+      class="btn btn-primary me-3">
+
+      Products
+
+    </a>
+
+    <a
+      routerLink="/warehouse"
+      class="btn btn-warning me-3">
+
+      Warehouses
+
+    </a>
+
+    <a
+      routerLink="/orders"
+      class="btn btn-info me-3">
+
+      Orders
+
+    </a>
+
+    <a
+      routerLink="/tracking"
+      class="btn btn-dark me-3">
+
+      Tracking
+
+    </a>
+
+    <button
+      class="btn btn-danger"
+      (click)="logout()">
+
+      Logout
+
+    </button>
+
+  </div>
+
+</div>

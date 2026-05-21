@@ -1,0 +1,75 @@
+<div class="container mt-5">
+
+  <div class="card p-4 mb-4">
+
+    <h2>Create Order</h2>
+
+    <input
+      class="form-control mb-3"
+      placeholder="Customer Name"
+      [(ngModel)]="customerName">
+
+    <input
+      class="form-control mb-3"
+      placeholder="Product Name"
+      [(ngModel)]="productName">
+
+    <input
+      class="form-control mb-3"
+      placeholder="Quantity"
+      [(ngModel)]="quantity">
+
+    <input
+      class="form-control mb-3"
+      placeholder="Status"
+      [(ngModel)]="status">
+
+    <button
+      class="btn btn-success"
+      (click)="addOrder()">
+
+      Create Order
+
+    </button>
+
+  </div>
+
+  <div class="card p-4">
+
+    <h2>Orders</h2>
+
+    <table class="table table-bordered">
+
+      <thead>
+
+      <tr>
+
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Status</th>
+
+      </tr>
+
+      </thead>
+
+      <tbody>
+
+      <tr *ngFor="let order of orders">
+
+        <td>{{order.id}}</td>
+        <td>{{order.customerName}}</td>
+        <td>{{order.productName}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.status}}</td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

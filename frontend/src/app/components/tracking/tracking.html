@@ -1,0 +1,75 @@
+<div class="container mt-5">
+
+  <div class="card p-4 mb-4">
+
+    <h2>Add Shipment</h2>
+
+    <input
+      class="form-control mb-3"
+      placeholder="Tracking Number"
+      [(ngModel)]="trackingNumber">
+
+    <input
+      class="form-control mb-3"
+      placeholder="Order Name"
+      [(ngModel)]="orderName">
+
+    <input
+      class="form-control mb-3"
+      placeholder="Current Location"
+      [(ngModel)]="currentLocation">
+
+    <input
+      class="form-control mb-3"
+      placeholder="Delivery Status"
+      [(ngModel)]="deliveryStatus">
+
+    <button
+      class="btn btn-success"
+      (click)="addShipment()">
+
+      Add Shipment
+
+    </button>
+
+  </div>
+
+  <div class="card p-4">
+
+    <h2>Shipment Tracking</h2>
+
+    <table class="table table-bordered">
+
+      <thead>
+
+      <tr>
+
+        <th>ID</th>
+        <th>Tracking No</th>
+        <th>Order</th>
+        <th>Location</th>
+        <th>Status</th>
+
+      </tr>
+
+      </thead>
+
+      <tbody>
+
+      <tr *ngFor="let shipment of shipments">
+
+        <td>{{shipment.id}}</td>
+        <td>{{shipment.trackingNumber}}</td>
+        <td>{{shipment.orderName}}</td>
+        <td>{{shipment.currentLocation}}</td>
+        <td>{{shipment.deliveryStatus}}</td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

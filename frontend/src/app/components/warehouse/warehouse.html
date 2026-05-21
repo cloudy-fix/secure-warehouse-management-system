@@ -1,0 +1,68 @@
+<div class="container mt-5">
+
+  <div class="card p-4 mb-4">
+
+    <h2>Add Warehouse</h2>
+
+    <input
+      class="form-control mb-3"
+      placeholder="Warehouse Name"
+      [(ngModel)]="name">
+
+    <input
+      class="form-control mb-3"
+      placeholder="Location"
+      [(ngModel)]="location">
+
+    <input
+      class="form-control mb-3"
+      placeholder="Capacity"
+      [(ngModel)]="capacity">
+
+    <button
+      class="btn btn-success"
+      (click)="addWarehouse()">
+
+      Add Warehouse
+
+    </button>
+
+  </div>
+
+  <div class="card p-4">
+
+    <h2>Warehouses</h2>
+
+    <table class="table table-bordered">
+
+      <thead>
+
+      <tr>
+
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Capacity</th>
+
+      </tr>
+
+      </thead>
+
+      <tbody>
+
+      <tr *ngFor="let warehouse of warehouses">
+
+        <td>{{warehouse.id}}</td>
+        <td>{{warehouse.name}}</td>
+        <td>{{warehouse.location}}</td>
+        <td>{{warehouse.capacity}}</td>
+
+      </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
