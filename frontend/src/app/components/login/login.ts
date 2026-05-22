@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 
-import { Router } from '@angular/router';
+import {
+  Router,
+  RouterLink
+} from '@angular/router';
 
 import { AuthService } from '../../services/auth';
 
@@ -11,7 +14,7 @@ import { AuthService } from '../../services/auth';
 
   standalone: true,
 
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
 
   templateUrl: './login.html',
 
@@ -62,6 +65,11 @@ export class Login {
 
         next: (response:any) => {
 
+          if (!response || response.includes('Invalid')) {
+            alert('Invalid login credentials');
+            return;
+          }
+
           // STORE JWT TOKEN
           localStorage.setItem(
 
@@ -81,7 +89,7 @@ export class Login {
 
             'role',
 
-            decoded.role
+            decoded.role || ''
 
           );
 

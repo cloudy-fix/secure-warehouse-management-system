@@ -1,0 +1,47 @@
+.products-container{
+
+    margin-left:270px;
+
+    padding:30px;
+
+    background:#f4f7fa;
+
+    min-height:100vh;
+
+}
+
+.card{
+
+    border:none;
+
+    border-radius:20px;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+
+}
+
+.table{
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+.table th{
+
+    vertical-align:middle;
+
+}
+
+input{
+
+    border-radius:10px;
+
+}
+
+.btn{
+
+    border-radius:10px;
+
+}

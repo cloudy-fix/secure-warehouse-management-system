@@ -7,12 +7,19 @@ import { CommonModule } from '@angular/common';
 import { TrackingService }
 from '../../services/tracking';
 
+import { Sidebar }
+from '../layout/sidebar/sidebar';
+
 @Component({
   selector: 'app-tracking',
 
   standalone: true,
 
-  imports: [FormsModule, CommonModule],
+  imports: [
+  CommonModule,
+  FormsModule,
+  Sidebar
+],
 
   templateUrl: './tracking.html',
 
@@ -31,9 +38,16 @@ export class Tracking implements OnInit {
 
   deliveryStatus = '';
 
+  destination = '';
+
+  role = '';
+
   constructor(
     private trackingService: TrackingService
-  ) {}
+  ) {
+    this.role =
+  localStorage.getItem('role') || '';
+  }
 
   ngOnInit(): void {
 

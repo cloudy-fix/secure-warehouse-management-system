@@ -1,53 +1,155 @@
-<div class="container mt-5">
+<app-sidebar></app-sidebar>
 
-  <div class="card p-4 mb-4">
+<div class="tracking-container">
 
-    <h2>Add Shipment</h2>
+  <!-- PAGE HEADER -->
 
-    <input
-      class="form-control mb-3"
-      placeholder="Tracking Number"
-      [(ngModel)]="trackingNumber">
+  <div class="d-flex justify-content-between mb-4">
 
-    <input
-      class="form-control mb-3"
-      placeholder="Order Name"
-      [(ngModel)]="orderName">
+    <div>
 
-    <input
-      class="form-control mb-3"
-      placeholder="Current Location"
-      [(ngModel)]="currentLocation">
+      <h1>Shipment Tracking</h1>
 
-    <input
-      class="form-control mb-3"
-      placeholder="Delivery Status"
-      [(ngModel)]="deliveryStatus">
+      <p class="text-muted">
 
-    <button
-      class="btn btn-success"
-      (click)="addShipment()">
+        Secure Logistics & Delivery Monitoring
 
-      Add Shipment
+      </p>
 
-    </button>
+    </div>
+
+    <div>
+
+      <span class="badge bg-dark p-2">
+
+        {{ role }}
+
+      </span>
+
+    </div>
 
   </div>
 
+  <!-- ANALYTICS -->
+
+  <div class="row mb-4">
+
+    <!-- TOTAL SHIPMENTS -->
+
+    <div class="col-md-4">
+
+      <div class="card analytics-card blue-card">
+
+        <h2>240</h2>
+
+        <p>Total Shipments</p>
+
+      </div>
+
+    </div>
+
+    <!-- IN TRANSIT -->
+
+    <div class="col-md-4">
+
+      <div class="card analytics-card yellow-card">
+
+        <h2>55</h2>
+
+        <p>In Transit</p>
+
+      </div>
+
+    </div>
+
+    <!-- DELIVERED -->
+
+    <div class="col-md-4">
+
+      <div class="card analytics-card green-card">
+
+        <h2>185</h2>
+
+        <p>Delivered</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ADD SHIPMENT -->
+
+  <div class="card p-4 mb-4">
+
+    <h3>Create Shipment</h3>
+
+    <div class="row">
+
+      <div class="col-md-4">
+
+        <input
+
+          class="form-control"
+
+          placeholder="Tracking Number"
+
+          [(ngModel)]="trackingNumber">
+
+      </div>
+
+      <div class="col-md-4">
+
+        <input
+
+          class="form-control"
+
+          placeholder="Destination"
+
+          [(ngModel)]="destination">
+
+      </div>
+
+      <div class="col-md-4">
+
+        <button
+
+          class="btn btn-success w-100"
+
+          (click)="addShipment()">
+
+          Create Shipment
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SHIPMENT TABLE -->
+
   <div class="card p-4">
 
-    <h2>Shipment Tracking</h2>
+    <h3 class="mb-4">
 
-    <table class="table table-bordered">
+      Shipment Tracking Panel
 
-      <thead>
+    </h3>
+
+    <table class="table table-hover table-bordered">
+
+      <thead class="table-dark">
 
       <tr>
 
         <th>ID</th>
-        <th>Tracking No</th>
-        <th>Order</th>
-        <th>Location</th>
+
+        <th>Tracking Number</th>
+
+        <th>Destination</th>
+
         <th>Status</th>
 
       </tr>
@@ -59,10 +161,38 @@
       <tr *ngFor="let shipment of shipments">
 
         <td>{{shipment.id}}</td>
+
         <td>{{shipment.trackingNumber}}</td>
-        <td>{{shipment.orderName}}</td>
-        <td>{{shipment.currentLocation}}</td>
-        <td>{{shipment.deliveryStatus}}</td>
+
+        <td>{{shipment.destination}}</td>
+
+        <td>
+
+          <span
+
+            *ngIf="
+              shipment.status === 'Delivered'
+            "
+
+            class="badge bg-success">
+
+            Delivered
+
+          </span>
+
+          <span
+
+            *ngIf="
+              shipment.status !== 'Delivered'
+            "
+
+            class="badge bg-warning text-dark">
+
+            In Transit
+
+          </span>
+
+        </td>
 
       </tr>
 

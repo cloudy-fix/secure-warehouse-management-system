@@ -7,12 +7,19 @@ import { CommonModule } from '@angular/common';
 import { OrderService }
 from '../../services/order';
 
+import { Sidebar }
+from '../layout/sidebar/sidebar';
+
 @Component({
   selector: 'app-orders',
 
   standalone: true,
 
-  imports: [FormsModule, CommonModule],
+  imports: [
+  CommonModule,
+  FormsModule,
+  Sidebar
+],
 
   templateUrl: './orders.html',
 
@@ -31,9 +38,18 @@ export class Orders implements OnInit {
 
   status = '';
 
+  product = '';
+
+  customer = '';
+
+  role = '';
+
   constructor(
     private orderService: OrderService
-  ) {}
+  ) {
+    this.role =
+  localStorage.getItem('role') || '';
+  }
 
   ngOnInit(): void {
 

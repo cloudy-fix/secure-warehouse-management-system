@@ -7,15 +7,19 @@ import { FormsModule } from '@angular/forms';
 import { ProductService }
 from '../../services/product';
 
+import { Sidebar }
+from '../layout/sidebar/sidebar';
+
 @Component({
   selector: 'app-products',
 
   standalone: true,
 
   imports: [
-    CommonModule,
-    FormsModule
-  ],
+  CommonModule,
+  FormsModule,
+  Sidebar
+],
 
   templateUrl: './products.html',
 

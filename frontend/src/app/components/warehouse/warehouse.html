@@ -1,48 +1,158 @@
-<div class="container mt-5">
+<app-sidebar></app-sidebar>
 
-  <div class="card p-4 mb-4">
+<div class="warehouse-container">
 
-    <h2>Add Warehouse</h2>
+  <!-- PAGE HEADER -->
 
-    <input
-      class="form-control mb-3"
-      placeholder="Warehouse Name"
-      [(ngModel)]="name">
+  <div class="d-flex justify-content-between mb-4">
 
-    <input
-      class="form-control mb-3"
-      placeholder="Location"
-      [(ngModel)]="location">
+    <div>
 
-    <input
-      class="form-control mb-3"
-      placeholder="Capacity"
-      [(ngModel)]="capacity">
+      <h1>Warehouse Management</h1>
 
-    <button
-      class="btn btn-success"
-      (click)="addWarehouse()">
+      <p class="text-muted">
 
-      Add Warehouse
+        Secure Storage & Capacity Monitoring
 
-    </button>
+      </p>
+
+    </div>
+
+    <div>
+
+      <span class="badge bg-dark p-2">
+
+        {{ role }}
+
+      </span>
+
+    </div>
 
   </div>
 
+  <!-- ANALYTICS CARDS -->
+
+  <div class="row mb-4">
+
+    <!-- TOTAL WAREHOUSES -->
+
+    <div class="col-md-4">
+
+      <div class="card warehouse-card blue-card">
+
+        <h2>12</h2>
+
+        <p>Total Warehouses</p>
+
+      </div>
+
+    </div>
+
+    <!-- STORAGE USED -->
+
+    <div class="col-md-4">
+
+      <div class="card warehouse-card green-card">
+
+        <h2>80%</h2>
+
+        <p>Storage Used</p>
+
+      </div>
+
+    </div>
+
+    <!-- SECURITY -->
+
+    <div class="col-md-4">
+
+      <div class="card warehouse-card red-card">
+
+        <h2>Secure</h2>
+
+        <p>Security Status</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ADD WAREHOUSE -->
+
+  <div class="card p-4 mb-4">
+
+    <h3>Add Warehouse</h3>
+
+    <div class="row">
+
+      <div class="col-md-4">
+
+        <input
+
+          class="form-control"
+
+          placeholder="Warehouse Name"
+
+          [(ngModel)]="name">
+
+      </div>
+
+      <div class="col-md-4">
+
+        <input
+
+          type="number"
+
+          class="form-control"
+
+          placeholder="Capacity"
+
+          [(ngModel)]="capacity">
+
+      </div>
+
+      <div class="col-md-4">
+
+        <button
+
+          class="btn btn-success w-100"
+
+          (click)="addWarehouse()">
+
+          Add Warehouse
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- WAREHOUSE TABLE -->
+
   <div class="card p-4">
 
-    <h2>Warehouses</h2>
+    <h3 class="mb-4">
 
-    <table class="table table-bordered">
+      Warehouse Storage Details
 
-      <thead>
+    </h3>
+
+    <table class="table table-hover table-bordered">
+
+      <thead class="table-dark">
 
       <tr>
 
         <th>ID</th>
-        <th>Name</th>
-        <th>Location</th>
+
+        <th>Warehouse</th>
+
         <th>Capacity</th>
+
+        <th>Status</th>
 
       </tr>
 
@@ -53,9 +163,34 @@
       <tr *ngFor="let warehouse of warehouses">
 
         <td>{{warehouse.id}}</td>
+
         <td>{{warehouse.name}}</td>
-        <td>{{warehouse.location}}</td>
+
         <td>{{warehouse.capacity}}</td>
+
+        <td>
+
+          <span
+
+            *ngIf="warehouse.capacity > 500"
+
+            class="badge bg-success">
+
+            Available
+
+          </span>
+
+          <span
+
+            *ngIf="warehouse.capacity <= 500"
+
+            class="badge bg-danger">
+
+            Nearly Full
+
+          </span>
+
+        </td>
 
       </tr>
 

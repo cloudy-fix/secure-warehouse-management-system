@@ -1,0 +1,95 @@
+<div class="sidebar">
+
+  <h3 class="logo">
+
+    Warehouse System
+
+  </h3>
+
+  <ul>
+
+    <!-- DASHBOARD -->
+
+    <li routerLink="/dashboard">
+
+      Dashboard
+
+    </li>
+
+    <!-- PRODUCTS -->
+
+    <li
+
+      *ngIf="
+        role === 'ADMIN' ||
+        role === 'SELLER'
+      "
+
+      routerLink="/products">
+
+      Products
+
+    </li>
+
+    <!-- WAREHOUSE -->
+
+    <li
+
+      *ngIf="role === 'ADMIN'"
+
+      routerLink="/warehouse">
+
+      Warehouses
+
+    </li>
+
+    <!-- ORDERS -->
+
+    <li
+
+      *ngIf="
+        role === 'ADMIN' ||
+        role === 'BUYER'
+      "
+
+      routerLink="/orders">
+
+      Orders
+
+    </li>
+
+    <!-- TRACKING -->
+
+    <li
+
+      *ngIf="role === 'ADMIN'"
+
+      routerLink="/tracking">
+
+      Shipment Tracking
+
+    </li>
+
+    <!-- ADMIN PANEL -->
+
+    <li
+
+      *ngIf="role === 'ADMIN'"
+
+      routerLink="/admin">
+
+      Admin Panel
+
+    </li>
+
+    <!-- LOGOUT -->
+
+    <li (click)="logout()">
+
+      Logout
+
+    </li>
+
+  </ul>
+
+</div>

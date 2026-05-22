@@ -1,14 +1,16 @@
 package com.warehouse.controller;
 
+import com.warehouse.dto.ProductResponse;
 import com.warehouse.entity.Product;
-
 import com.warehouse.service.ProductService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/products")
@@ -29,9 +31,19 @@ public class ProductController {
 
     // GET PRODUCTS
     @GetMapping
-    public List<Product> getProducts() {
+    public List<ProductResponse> getProducts(
+            Authentication authentication) {
 
-        return productService.getProducts();
+        String role = authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .filter(auth -> auth.startsWith("ROLE_"))
+                .map(auth -> auth.substring(5))
+                .findFirst()
+                .orElse("BUYER");
+
+        return productService.getProducts().stream()
+                .map(product -> ProductResponse.from(product, role))
+                .collect(Collectors.toList());
 
     }
 

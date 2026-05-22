@@ -7,12 +7,19 @@ import { CommonModule } from '@angular/common';
 import { WarehouseService }
 from '../../services/warehouse';
 
+import { Sidebar }
+from '../layout/sidebar/sidebar';
+
 @Component({
   selector: 'app-warehouse',
 
   standalone: true,
 
-  imports: [FormsModule, CommonModule],
+ imports: [
+  CommonModule,
+  FormsModule,
+  Sidebar
+],
 
   templateUrl: './warehouse.html',
 
@@ -29,9 +36,14 @@ export class Warehouse implements OnInit {
 
   capacity = '';
 
+  role = '';
+
   constructor(
     private warehouseService: WarehouseService
-  ) {}
+  ) {
+    this.role =
+  localStorage.getItem('role') || '';
+  }
 
   ngOnInit(): void {
 

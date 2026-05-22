@@ -1,30 +1,28 @@
 import { Component } from '@angular/core';
 
 import {
-  Router
+  Router,
+  RouterLink
 } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 
-import { Sidebar }
-from '../layout/sidebar/sidebar';
-
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-sidebar',
 
   standalone: true,
 
- imports: [
-  CommonModule,
-  Sidebar
-],
+  imports: [
+    RouterLink,
+    CommonModule
+  ],
 
-  templateUrl: './dashboard.html',
+  templateUrl: './sidebar.html',
 
-  styleUrl: './dashboard.css'
+  styleUrl: './sidebar.css'
 })
 
-export class Dashboard {
+export class Sidebar {
 
   role = '';
 
@@ -32,7 +30,6 @@ export class Dashboard {
     private router: Router
   ) {
 
-    // GET ROLE FROM LOCAL STORAGE
     this.role =
       localStorage.getItem('role') || '';
 
@@ -40,15 +37,12 @@ export class Dashboard {
 
   logout() {
 
-    // REMOVE TOKEN
     localStorage.removeItem('token');
 
-    // REMOVE ROLE
     localStorage.removeItem('role');
 
     alert('Logged Out');
 
-    // REDIRECT LOGIN
     this.router.navigate(['/']);
 
   }

@@ -1,53 +1,155 @@
-<div class="container mt-5">
+<app-sidebar></app-sidebar>
 
-  <div class="card p-4 mb-4">
+<div class="orders-container">
 
-    <h2>Create Order</h2>
+  <!-- PAGE HEADER -->
 
-    <input
-      class="form-control mb-3"
-      placeholder="Customer Name"
-      [(ngModel)]="customerName">
+  <div class="d-flex justify-content-between mb-4">
 
-    <input
-      class="form-control mb-3"
-      placeholder="Product Name"
-      [(ngModel)]="productName">
+    <div>
 
-    <input
-      class="form-control mb-3"
-      placeholder="Quantity"
-      [(ngModel)]="quantity">
+      <h1>Orders Management</h1>
 
-    <input
-      class="form-control mb-3"
-      placeholder="Status"
-      [(ngModel)]="status">
+      <p class="text-muted">
 
-    <button
-      class="btn btn-success"
-      (click)="addOrder()">
+        Buyer Orders & Delivery Monitoring
 
-      Create Order
+      </p>
 
-    </button>
+    </div>
+
+    <div>
+
+      <span class="badge bg-dark p-2">
+
+        {{ role }}
+
+      </span>
+
+    </div>
 
   </div>
 
+  <!-- ANALYTICS -->
+
+  <div class="row mb-4">
+
+    <!-- TOTAL ORDERS -->
+
+    <div class="col-md-4">
+
+      <div class="card analytics-card blue-card">
+
+        <h2>120</h2>
+
+        <p>Total Orders</p>
+
+      </div>
+
+    </div>
+
+    <!-- PENDING -->
+
+    <div class="col-md-4">
+
+      <div class="card analytics-card yellow-card">
+
+        <h2>35</h2>
+
+        <p>Pending Orders</p>
+
+      </div>
+
+    </div>
+
+    <!-- DELIVERED -->
+
+    <div class="col-md-4">
+
+      <div class="card analytics-card green-card">
+
+        <h2>85</h2>
+
+        <p>Delivered Orders</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ADD ORDER -->
+
+  <div class="card p-4 mb-4">
+
+    <h3>Create Order</h3>
+
+    <div class="row">
+
+      <div class="col-md-4">
+
+        <input
+
+          class="form-control"
+
+          placeholder="Product"
+
+          [(ngModel)]="product">
+
+      </div>
+
+      <div class="col-md-4">
+
+        <input
+
+          class="form-control"
+
+          placeholder="Customer"
+
+          [(ngModel)]="customer">
+
+      </div>
+
+      <div class="col-md-4">
+
+        <button
+
+          class="btn btn-success w-100"
+
+          (click)="addOrder()">
+
+          Create Order
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ORDERS TABLE -->
+
   <div class="card p-4">
 
-    <h2>Orders</h2>
+    <h3 class="mb-4">
 
-    <table class="table table-bordered">
+      Orders Tracking Panel
 
-      <thead>
+    </h3>
+
+    <table class="table table-hover table-bordered">
+
+      <thead class="table-dark">
 
       <tr>
 
         <th>ID</th>
-        <th>Customer</th>
+
         <th>Product</th>
-        <th>Quantity</th>
+
+        <th>Customer</th>
+
         <th>Status</th>
 
       </tr>
@@ -59,10 +161,38 @@
       <tr *ngFor="let order of orders">
 
         <td>{{order.id}}</td>
-        <td>{{order.customerName}}</td>
-        <td>{{order.productName}}</td>
-        <td>{{order.quantity}}</td>
-        <td>{{order.status}}</td>
+
+        <td>{{order.product}}</td>
+
+        <td>{{order.customer}}</td>
+
+        <td>
+
+          <span
+
+            *ngIf="
+              order.status === 'Delivered'
+            "
+
+            class="badge bg-success">
+
+            Delivered
+
+          </span>
+
+          <span
+
+            *ngIf="
+              order.status !== 'Delivered'
+            "
+
+            class="badge bg-warning text-dark">
+
+            Pending
+
+          </span>
+
+        </td>
 
       </tr>
 

@@ -1,56 +1,124 @@
-<div class="container mt-5">
+<app-sidebar></app-sidebar>
+
+<div class="products-container">
+
+  <!-- PAGE HEADER -->
+
+  <div class="d-flex justify-content-between mb-4">
+
+    <div>
+
+      <h1>Product Security Panel</h1>
+
+      <p class="text-muted">
+
+        Secure Inventory Management
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <span class="badge bg-dark p-2">
+
+        {{ role }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- SEARCH BAR -->
+
+  <div class="card p-3 mb-4">
+
+    <input
+
+      type="text"
+
+      class="form-control"
+
+      placeholder="Search Products">
+
+  </div>
 
   <!-- ADD PRODUCT -->
 
   <div class="card p-4 mb-4">
 
-    <h2>Add Product</h2>
+    <h3>Add Product</h3>
 
-    <input
+    <div class="row">
 
-      class="form-control mb-3"
+      <div class="col-md-3">
 
-      placeholder="Product Name"
+        <input
 
-      [(ngModel)]="name">
+          class="form-control"
 
-    <input
+          placeholder="Product Name"
 
-      class="form-control mb-3"
+          [(ngModel)]="name">
 
-      placeholder="Category"
+      </div>
 
-      [(ngModel)]="category">
+      <div class="col-md-3">
 
-    <input
+        <input
 
-      type="number"
+          class="form-control"
 
-      class="form-control mb-3"
+          placeholder="Category"
 
-      placeholder="Price"
+          [(ngModel)]="category">
 
-      [(ngModel)]="price">
+      </div>
 
-    <input
+      <div class="col-md-2">
 
-      type="number"
+        <input
 
-      class="form-control mb-3"
+          type="number"
 
-      placeholder="Quantity"
+          class="form-control"
 
-      [(ngModel)]="quantity">
+          placeholder="Price"
 
-    <button
+          [(ngModel)]="price">
 
-      class="btn btn-success"
+      </div>
 
-      (click)="addProduct()">
+      <div class="col-md-2">
 
-      Add Product
+        <input
 
-    </button>
+          type="number"
+
+          class="form-control"
+
+          placeholder="Quantity"
+
+          [(ngModel)]="quantity">
+
+      </div>
+
+      <div class="col-md-2">
+
+        <button
+
+          class="btn btn-success w-100"
+
+          (click)="addProduct()">
+
+          Add
+
+        </button>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -58,17 +126,27 @@
 
   <div class="card p-4">
 
-    <h2>Products</h2>
+    <h3 class="mb-4">
 
-    <table class="table table-bordered">
+      Secure Product Inventory
 
-      <thead>
+    </h3>
+
+    <table class="table table-hover table-bordered">
+
+      <thead class="table-dark">
 
       <tr>
 
         <th>ID</th>
 
-        <th>Product</th>
+        <th *ngIf="role === 'ADMIN'">
+
+          Product Name
+
+        </th>
+
+        <th>Masked Code</th>
 
         <th>Category</th>
 
@@ -76,7 +154,7 @@
 
         <th>Quantity</th>
 
-        <th>Masked Code</th>
+        <th>Status</th>
 
       </tr>
 
@@ -98,9 +176,9 @@
 
         <!-- SELLER VIEW -->
 
-        <td *ngIf="role === 'SELLER'">
+        <td>
 
-          Hidden Product
+          {{product.maskedCode}}
 
         </td>
 
@@ -108,11 +186,41 @@
 
         <td>{{product.price}}</td>
 
-        <td>{{product.quantity}}</td>
+        <td>{{ role === 'ADMIN' ? product.quantity : product.displayQuantity }}</td>
+
+        <!-- STOCK STATUS -->
 
         <td>
 
-          {{product.maskedCode}}
+          <span
+
+            *ngIf="product.stockStatus === 'In Stock'"
+
+            class="badge bg-success">
+
+            In Stock
+
+          </span>
+
+          <span
+
+            *ngIf="product.stockStatus === 'Low Stock'"
+
+            class="badge bg-danger">
+
+            Low Stock
+
+          </span>
+
+          <span
+
+            *ngIf="product.stockStatus !== 'In Stock' && product.stockStatus !== 'Low Stock'"
+
+            class="badge bg-secondary">
+
+            {{ product.stockStatus }}
+
+          </span>
 
         </td>
 

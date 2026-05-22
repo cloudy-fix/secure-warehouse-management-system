@@ -1,12 +1,26 @@
-<div class="container mt-5">
+<app-sidebar></app-sidebar>
 
-  <h1 class="mb-4 text-center">
+<div class="container-fluid dashboard-content">
 
-    Secure Warehouse Dashboard
+  <!-- HEADER -->
 
-  </h1>
+  <div class="mb-4">
 
-  <!-- ROLE DISPLAY -->
+    <h1>
+
+      Secure Warehouse Dashboard
+
+    </h1>
+
+    <p class="text-muted">
+
+      Enterprise Product Security System
+
+    </p>
+
+  </div>
+
+  <!-- ROLE BADGE -->
 
   <div class="alert alert-info">
 
@@ -16,109 +30,87 @@
 
   </div>
 
-  <!-- ADMIN CONTROLS -->
+  <!-- DASHBOARD CARDS -->
 
-  <div *ngIf="role === 'ADMIN'">
+  <div class="row">
 
-    <div class="card p-4 mb-4 border-danger">
+    <!-- PRODUCTS -->
 
-      <h2 class="text-danger">
+    <div class="col-md-3">
 
-        Admin Controls
+      <div class="card dashboard-card products-card">
 
-      </h2>
+        <h2>150</h2>
 
-      <p>
+        <p>Total Products</p>
 
-        Full system access enabled.
+      </div>
 
-      </p>
+    </div>
+
+    <!-- ORDERS -->
+
+    <div class="col-md-3">
+
+      <div class="card dashboard-card orders-card">
+
+        <h2>45</h2>
+
+        <p>Total Orders</p>
+
+      </div>
+
+    </div>
+
+    <!-- WAREHOUSES -->
+
+    <div class="col-md-3">
+
+      <div class="card dashboard-card warehouse-card">
+
+        <h2>12</h2>
+
+        <p>Warehouses</p>
+
+      </div>
+
+    </div>
+
+    <!-- SECURITY -->
+
+    <div class="col-md-3">
+
+      <div class="card dashboard-card security-card">
+
+        <h2>99%</h2>
+
+        <p>Security Status</p>
+
+      </div>
 
     </div>
 
   </div>
 
-  <!-- MENU BUTTONS -->
+  <!-- ADMIN SECTION -->
 
-  <div class="d-flex flex-wrap gap-3">
+  <div
 
-    <!-- PRODUCTS -->
+    *ngIf="role === 'ADMIN'"
 
-    <a
+    class="card p-4 mt-4 border-danger">
 
-      *ngIf="
-        role === 'ADMIN' ||
-        role === 'SELLER'
-      "
+    <h3 class="text-danger">
 
-      routerLink="/products"
+      Admin Security Controls
 
-      class="btn btn-primary btn-lg">
+    </h3>
 
-      Products
+    <p>
 
-    </a>
+      Product masking and warehouse security active.
 
-    <!-- ORDERS -->
-
-    <a
-
-      *ngIf="
-        role === 'ADMIN' ||
-        role === 'BUYER'
-      "
-
-      routerLink="/orders"
-
-      class="btn btn-info btn-lg">
-
-      Orders
-
-    </a>
-
-    <!-- WAREHOUSE -->
-
-    <a
-
-      *ngIf="
-        role === 'ADMIN'
-      "
-
-      routerLink="/warehouse"
-
-      class="btn btn-warning btn-lg">
-
-      Warehouse
-
-    </a>
-
-    <!-- TRACKING -->
-
-    <a
-
-      *ngIf="
-        role === 'ADMIN'
-      "
-
-      routerLink="/tracking"
-
-      class="btn btn-dark btn-lg">
-
-      Shipment Tracking
-
-    </a>
-
-    <!-- LOGOUT -->
-
-    <button
-
-      class="btn btn-danger btn-lg"
-
-      (click)="logout()">
-
-      Logout
-
-    </button>
+    </p>
 
   </div>
 
