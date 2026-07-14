@@ -1,0 +1,6 @@
+﻿flowchart TD
+    S1["User authenticates"] --> S2["Frontend calls backend API"]
+    S2["Frontend calls backend API"] --> S3["Backend validates role and request"]
+    S3["Backend validates role and request"] --> S4["Database stores transaction"]
+    S4["Database stores transaction"] --> S5["UI displays warehouse state"]
+

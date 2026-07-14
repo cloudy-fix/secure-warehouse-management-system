@@ -1,0 +1,6 @@
+﻿flowchart LR
+    User["Warehouse users and admin actions"] --> App["Angular UI and Spring Boot API"]
+    App --> Data["SQL schema, users, products, orders, tracking records"]
+    App --> Output["Authenticated warehouse workflows"]
+    Data --> Output
+
