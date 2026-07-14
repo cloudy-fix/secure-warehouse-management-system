@@ -1,0 +1,120 @@
+﻿{
+    "visibility":  "Public",
+    "sample":  {
+                   "inventory":  [
+                                     {
+                                         "stock":  "42",
+                                         "status":  "Healthy",
+                                         "sku":  "WH-1001"
+                                     },
+                                     {
+                                         "stock":  "7",
+                                         "status":  "Reorder",
+                                         "sku":  "WH-1033"
+                                     },
+                                     {
+                                         "stock":  "128",
+                                         "status":  "Healthy",
+                                         "sku":  "WH-2409"
+                                     }
+                                 ]
+               },
+    "endpoints":  [
+                      {
+                          "method":  "POST",
+                          "path":  "/api/users/login",
+                          "purpose":  "Authenticate user"
+                      },
+                      {
+                          "method":  "GET",
+                          "path":  "/api/products",
+                          "purpose":  "List products"
+                      },
+                      {
+                          "method":  "POST",
+                          "path":  "/api/orders",
+                          "purpose":  "Create order"
+                      },
+                      {
+                          "method":  "GET",
+                          "path":  "/api/shipments",
+                          "purpose":  "Track shipments"
+                      }
+                  ],
+    "category":  "Full Stack Enterprise Security",
+    "accent":  "#2563eb",
+    "runtime":  "GitHub Pages hosts a live operations UI for review. The repo contains the Angular frontend, Java backend, SQL schema, and security implementation.",
+    "docs":  [
+                 {
+                     "label":  "Repository",
+                     "url":  "https://github.com/cloudy-fix/secure-warehouse-management-system",
+                     "note":  "Source, commits, issues, and project files"
+                 },
+                 {
+                     "label":  "Architecture",
+                     "url":  "https://github.com/cloudy-fix/secure-warehouse-management-system/blob/main/docs/ARCHITECTURE.md",
+                     "note":  "System design and responsibilities"
+                 },
+                 {
+                     "label":  "Operations",
+                     "url":  "https://github.com/cloudy-fix/secure-warehouse-management-system/blob/main/docs/OPERATIONS.md",
+                     "note":  "Runbook and deployment notes"
+                 },
+                 {
+                     "label":  "Workflow Diagram",
+                     "url":  "https://github.com/cloudy-fix/secure-warehouse-management-system/blob/main/docs/diagrams/workflow.mmd",
+                     "note":  "End-to-end process map"
+                 },
+                 {
+                     "label":  "Architecture Diagram",
+                     "url":  "https://github.com/cloudy-fix/secure-warehouse-management-system/blob/main/docs/diagrams/architecture.mmd",
+                     "note":  "Component-level diagram"
+                 }
+             ],
+    "repo":  "secure-warehouse-management-system",
+    "links":  {
+                  "pages":  "https://cloudy-fix.github.io/secure-warehouse-management-system/",
+                  "portfolio":  "https://cloudy-fix.github.io/portfolio/projects.html",
+                  "repo":  "https://github.com/cloudy-fix/secure-warehouse-management-system"
+              },
+    "stack":  [
+                  "Angular",
+                  "Java Spring Boot",
+                  "JWT Security",
+                  "SQL Database",
+                  "Warehouse Operations"
+              ],
+    "metrics":  [
+                    {
+                        "label":  "Layers",
+                        "detail":  "Separated production surfaces",
+                        "value":  "Frontend + API + DB"
+                    },
+                    {
+                        "label":  "Security",
+                        "detail":  "Access-aware workflows",
+                        "value":  "JWT + roles"
+                    },
+                    {
+                        "label":  "Domain",
+                        "detail":  "Products, orders, shipments",
+                        "value":  "Warehouse Ops"
+                    }
+                ],
+    "accentTwo":  "#ca8a04",
+    "highlights":  [
+                       "Models secure warehouse workflows",
+                       "Separates frontend, backend, and database",
+                       "Includes role-aware controls and audit thinking"
+                   ],
+    "components":  [
+                       "Angular frontend",
+                       "Spring Boot backend",
+                       "JWT filter",
+                       "SQL schema",
+                       "Inventory/order/shipment services"
+                   ],
+    "demoType":  "warehouse",
+    "mission":  "A production-style warehouse operations workspace with backend, frontend, database, JWT security, inventory, orders, shipments, and audit-aware controls.",
+    "title":  "Secure Warehouse Management System"
+}
